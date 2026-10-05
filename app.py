@@ -237,7 +237,7 @@ with tab_one:
 # ------------------------------------------------------------------ tab 2
 with tab_batch:
     st.subheader(f"Run the full evaluation: {SET_LABELS[dataset]}")
-    label = (f"**{model}** with instructions **{version_of(load_prompt())}**" if method_key == "claude"
+    label = (f"**{MODEL_SHORT.get(model, model)}** with instructions **{version_of(load_prompt())}**" if method_key == "claude"
              else "**the rule-based baseline**")
     st.write(f"Runs {label} over all 30 invoices in the {SET_LABELS[dataset].lower()}, scores every field against "
              "the answer key, and records tokens, cost and time. Results are saved, so you can compare runs side by side.")
