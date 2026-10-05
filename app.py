@@ -261,7 +261,7 @@ with tab_batch:
         st.divider()
         st.subheader("Comparison")
         summary = pd.DataFrame([{
-            "Method": r["model"],
+            "Method": "Rule-based" if r["method"] == "baseline" else MODEL_SHORT.get(r["model"], r["model"]),
             "Instructions": r.get("prompt_version", "n/a"),
             "Field accuracy": r["summary"]["overall_accuracy"] * 100,
             "Perfect invoices": f"{r['summary']['perfect_documents']}/{r['summary']['documents']}",
