@@ -1,0 +1,2123 @@
+{
+  "method": "claude",
+  "model": "claude-sonnet-5-5",
+  "dataset": "test",
+  "prompt_version": "v1",
+  "prompt": "You are extracting data from a business invoice for an accounts-payable system.\nRead the whole document (all pages) and return the invoice's data as JSON.\n\nRules:\n- Dates: output YYYY-MM-DD. Watch for day-first European formats (e.g. 05.03.2026 is 5 March).\n- Numbers: plain numbers with no currency symbols or thousands separators. European \"1.234,56\" is 1234.56.\n- If there is a discount, subtotal is the amount BEFORE the discount.\n- Don't confuse the invoice number with PO numbers, order references or customer IDs.\n- If something is unreadable or the line items don't add up to the subtotal, set needs_review=true and say why.\n-Sometimes an invoice will be billed to an accounting department at the company (e.g. Accounts Payable). Remove the department name and return only the company name\n",
+  "run_at": "2026-10-04T15:59:27",
+  "summary": {
+    "documents": 30,
+    "overall_accuracy": 1.0,
+    "perfect_documents": 30,
+    "per_field": {
+      "vendor_name": 1.0,
+      "invoice_number": 1.0,
+      "invoice_date": 1.0,
+      "due_date": 1.0,
+      "bill_to": 1.0,
+      "currency": 1.0,
+      "subtotal": 1.0,
+      "tax": 1.0,
+      "total": 1.0,
+      "line_items": 1.0
+    },
+    "flagged_for_review": 0,
+    "errors": 0,
+    "total_cost_usd": 0.34787,
+    "avg_cost_usd": 0.011595666666666667,
+    "max_cost_usd": 0.023836000000000003,
+    "avg_seconds": 4.398459419980645,
+    "input_tokens": 97470,
+    "output_tokens": 15293
+  },
+  "rows": [
+    {
+      "file": "test_01.pdf",
+      "layout": "euro",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-19466",
+        "invoice_date": "2026-03-15",
+        "due_date": "2026-04-14",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "EUR",
+        "subtotal": 1848.75,
+        "tax": 333.7,
+        "total": 2090.01,
+        "line_items": [
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95,
+            "amount": 95
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 4000,
+            "unit_price": 0.42,
+            "amount": 1680
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 5,
+            "unit_price": 14.75,
+            "amount": 73.75
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2839,
+      "output_tokens": 468,
+      "cost_usd": 0.010358,
+      "seconds": 4.7186883999966085,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_02.pdf",
+      "layout": "receipt",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Cedar & Pine Facilities",
+        "invoice_number": "R34900",
+        "invoice_date": "2026-04-12",
+        "due_date": "2026-05-27",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 1920.0,
+        "tax": 134.4,
+        "total": 2054.4,
+        "line_items": [
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 25,
+            "unit_price": 76.8,
+            "amount": 1920.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2813,
+      "output_tokens": 175,
+      "cost_usd": 0.007376,
+      "seconds": 2.6488834000192583,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_03.pdf",
+      "layout": "modern",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Meridian IT Services",
+        "invoice_number": "60873",
+        "invoice_date": "2026-06-10",
+        "due_date": "2026-07-25",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 9400.75,
+        "tax": 0,
+        "total": 9400.75,
+        "line_items": [
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 10,
+            "unit_price": 125,
+            "amount": 1250
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 12,
+            "unit_price": 640,
+            "amount": 7680
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 2,
+            "unit_price": 89.5,
+            "amount": 179
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 12,
+            "unit_price": 14.75,
+            "amount": 177
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 3,
+            "unit_price": 38.25,
+            "amount": 114.75
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2828,
+      "output_tokens": 458,
+      "cost_usd": 0.010235999999999999,
+      "seconds": 4.108911099843681,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_04.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Kestrel Print Works",
+        "invoice_number": "INV-35093",
+        "invoice_date": "2026-04-03",
+        "due_date": "2026-04-18",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 2990.8,
+        "tax": 209.36,
+        "total": 3200.16,
+        "line_items": [
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 1,
+            "unit_price": 76.8,
+            "amount": 76.8
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 1,
+            "unit_price": 1850,
+            "amount": 1850
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 2,
+            "unit_price": 148,
+            "amount": 296
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 12,
+            "unit_price": 64,
+            "amount": 768
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3081,
+      "output_tokens": 404,
+      "cost_usd": 0.010202,
+      "seconds": 3.83850139984861,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_05.pdf",
+      "layout": "statement",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "ST-86006",
+        "invoice_date": "2026-08-29",
+        "due_date": "2026-09-13",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 7968.1,
+        "tax": 557.77,
+        "total": 8525.87,
+        "line_items": [
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 12,
+            "unit_price": 89.5,
+            "amount": 1074.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 25,
+            "unit_price": 148.0,
+            "amount": 3700.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 4,
+            "unit_price": 212.4,
+            "amount": 849.6
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 12,
+            "unit_price": 189.0,
+            "amount": 2268.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 2,
+            "unit_price": 38.25,
+            "amount": 76.5
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3097,
+      "output_tokens": 624,
+      "cost_usd": 0.012434,
+      "seconds": 5.0865362000186,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_06.pdf",
+      "layout": "modern",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "ATLAS JANITORIAL CO.",
+        "invoice_number": "33484",
+        "invoice_date": "2026-06-06",
+        "due_date": "2026-06-21",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 231.99,
+        "tax": 0,
+        "total": 231.99,
+        "line_items": [
+          {
+            "description": "LED panel retrofit",
+            "quantity": 1,
+            "unit_price": 189.0,
+            "amount": 189.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 1,
+            "unit_price": 42.99,
+            "amount": 42.99
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3029,
+      "output_tokens": 209,
+      "cost_usd": 0.008148,
+      "seconds": 2.2367418999783695,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_07.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Brightline Electrical",
+        "invoice_number": "A79398",
+        "invoice_date": "2026-05-31",
+        "due_date": "2026-06-15",
+        "bill_to": "Granite Peak Construction",
+        "currency": "USD",
+        "subtotal": 940.68,
+        "tax": 65.85,
+        "total": 1006.53,
+        "line_items": [
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 12,
+            "unit_price": 42.99,
+            "amount": 515.88
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 2,
+            "unit_price": 212.4,
+            "amount": 424.8
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3037,
+      "output_tokens": 420,
+      "cost_usd": 0.010274000000000002,
+      "seconds": 4.174798300024122,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_08.png",
+      "layout": "form",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Verde Catering Group",
+        "invoice_number": "PI/26/50283",
+        "invoice_date": "2026-05-14",
+        "due_date": "2026-05-29",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 2078.75,
+        "tax": 129.92,
+        "total": 2208.67,
+        "line_items": [
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 25,
+            "unit_price": 23.95,
+            "amount": 598.75
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 10,
+            "unit_price": 148.0,
+            "amount": 1480.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4062,
+      "output_tokens": 215,
+      "cost_usd": 0.010273999999999998,
+      "seconds": 2.7598518999293447,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_09.pdf",
+      "layout": "statement",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Summit Safety Equipment",
+        "invoice_number": "ST-69106",
+        "invoice_date": "2026-02-09",
+        "due_date": "2026-03-26",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 4964.8,
+        "tax": 310.3,
+        "total": 5275.1,
+        "line_items": [
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 1,
+            "unit_price": 148.0,
+            "amount": 148.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 12,
+            "unit_price": 189.0,
+            "amount": 2268.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 12,
+            "unit_price": 212.4,
+            "amount": 2548.8
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3047,
+      "output_tokens": 421,
+      "cost_usd": 0.010304,
+      "seconds": 3.8664222999941558,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_10.pdf",
+      "layout": "modern",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "70459",
+        "invoice_date": "2026-02-03",
+        "due_date": "2026-03-20",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 6487.35,
+        "tax": 0,
+        "total": 6487.35,
+        "line_items": [
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 4000,
+            "unit_price": 0.42,
+            "amount": 1680.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 25,
+            "unit_price": 89.5,
+            "amount": 2237.5
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 1,
+            "unit_price": 1850.0,
+            "amount": 1850.0
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 12,
+            "unit_price": 54.0,
+            "amount": 648.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 3,
+            "unit_price": 23.95,
+            "amount": 71.85
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2828,
+      "output_tokens": 663,
+      "cost_usd": 0.012285999999999998,
+      "seconds": 5.442338399821892,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_11.pdf",
+      "layout": "receipt",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Bluebird Logistics LLC",
+        "invoice_number": "R24194",
+        "invoice_date": "2026-03-15",
+        "due_date": "2026-04-14",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 1848.0,
+        "tax": 129.36,
+        "total": 1977.36,
+        "line_items": [
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 4,
+            "unit_price": 54.0,
+            "amount": 216.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 12,
+            "unit_price": 95.0,
+            "amount": 1140.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 12,
+            "unit_price": 41.0,
+            "amount": 492.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2864,
+      "output_tokens": 381,
+      "cost_usd": 0.009538,
+      "seconds": 3.5573350000195205,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_12.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Cedar & Pine Facilities",
+        "invoice_number": "INV-85630",
+        "invoice_date": "2026-08-13",
+        "due_date": "2026-09-12",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 5550,
+        "tax": 0,
+        "total": 5272.5,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 3,
+            "unit_price": 1850,
+            "amount": 5550
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3018,
+      "output_tokens": 170,
+      "cost_usd": 0.007736,
+      "seconds": 2.5800185000989586,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_13.pdf",
+      "layout": "receipt",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Meridian IT Services",
+        "invoice_number": "R94849",
+        "invoice_date": "2026-01-29",
+        "due_date": "2026-03-15",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 190.0,
+        "tax": 11.88,
+        "total": 201.88,
+        "line_items": [
+          {
+            "description": "Service technician hour",
+            "quantity": 2,
+            "unit_price": 95.0,
+            "amount": 190.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2688,
+      "output_tokens": 161,
+      "cost_usd": 0.006986,
+      "seconds": 2.981752600055188,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_14.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Kestrel Print Works",
+        "invoice_number": "INV-22153",
+        "invoice_date": "2026-03-16",
+        "due_date": "2026-04-15",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 2858.75,
+        "tax": 0,
+        "total": 2858.75,
+        "line_items": [
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 2,
+            "unit_price": 54.0,
+            "amount": 108.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 1,
+            "unit_price": 38.25,
+            "amount": 38.25
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 25,
+            "unit_price": 89.5,
+            "amount": 2237.5
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 5,
+            "unit_price": 95.0,
+            "amount": 475.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3071,
+      "output_tokens": 429,
+      "cost_usd": 0.010432,
+      "seconds": 3.811964499996975,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_15.pdf",
+      "layout": "form",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "PI/26/80594",
+        "invoice_date": "2026-03-22",
+        "due_date": "2026-04-21",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 564.24,
+        "tax": 46.55,
+        "total": 610.79,
+        "line_items": [
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 1,
+            "unit_price": 42.99,
+            "amount": 42.99
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 4,
+            "unit_price": 89.5,
+            "amount": 358
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 1,
+            "unit_price": 38.25,
+            "amount": 38.25
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 1,
+            "unit_price": 125,
+            "amount": 125
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3110,
+      "output_tokens": 419,
+      "cost_usd": 0.010409999999999999,
+      "seconds": 3.792002100031823,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_16.pdf",
+      "layout": "euro",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-37887",
+        "invoice_date": "2026-08-13",
+        "due_date": "2026-08-28",
+        "bill_to": "Granite Peak Construction",
+        "currency": "EUR",
+        "subtotal": 48402.0,
+        "tax": 8736.56,
+        "total": 54718.46,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 25,
+            "unit_price": 1850.0,
+            "amount": 46250.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 4,
+            "unit_price": 189.0,
+            "amount": 756.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 10,
+            "unit_price": 76.8,
+            "amount": 768.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 4,
+            "unit_price": 38.25,
+            "amount": 153.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 5,
+            "unit_price": 95.0,
+            "amount": 475.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3195,
+      "output_tokens": 524,
+      "cost_usd": 0.011630000000000001,
+      "seconds": 4.517477199900895,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_17.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Brightline Electrical",
+        "invoice_number": "MIS-20357",
+        "invoice_date": "2026-08-16",
+        "due_date": "2026-09-15",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 28430.09,
+        "tax": 1890.6,
+        "total": 28899.19,
+        "line_items": [
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 5,
+            "unit_price": 76.8,
+            "amount": 384.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 4,
+            "unit_price": 212.4,
+            "amount": 849.6
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 1,
+            "unit_price": 42.99,
+            "amount": 42.99
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 10,
+            "unit_price": 23.95,
+            "amount": 239.5
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 2,
+            "unit_price": 1850.0,
+            "amount": 3700.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 5,
+            "unit_price": 64.0,
+            "amount": 320.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 10,
+            "unit_price": 4.5,
+            "amount": 45.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 10,
+            "unit_price": 95.0,
+            "amount": 950.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 10,
+            "unit_price": 89.5,
+            "amount": 895.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 10,
+            "unit_price": 148.0,
+            "amount": 1480.0
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 4000,
+            "unit_price": 0.42,
+            "amount": 1680.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 3,
+            "unit_price": 189.0,
+            "amount": 567.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 2,
+            "unit_price": 41.0,
+            "amount": 82.0
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 2,
+            "unit_price": 125.0,
+            "amount": 250.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640.0,
+            "amount": 16000.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4972,
+      "output_tokens": 1321,
+      "cost_usd": 0.023154,
+      "seconds": 8.125355900032446,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_18.pdf",
+      "layout": "form",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Verde Catering Group",
+        "invoice_number": "PI/26/99898",
+        "invoice_date": "2026-06-12",
+        "due_date": "2026-07-27",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 13953.0,
+        "tax": 1151.12,
+        "total": 15104.12,
+        "line_items": [
+          {
+            "description": "Business cards (500)",
+            "quantity": 2,
+            "unit_price": 64.0,
+            "amount": 128.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 25,
+            "unit_price": 212.4,
+            "amount": 5310.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 1,
+            "unit_price": 640.0,
+            "amount": 640.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 25,
+            "unit_price": 315.0,
+            "amount": 7875.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3119,
+      "output_tokens": 460,
+      "cost_usd": 0.010838,
+      "seconds": 4.22761659999378,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_19.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Summit Safety Equipment",
+        "invoice_number": "A50116",
+        "invoice_date": "2026-08-09",
+        "due_date": "2026-08-24",
+        "bill_to": "Prairie Credit Union",
+        "currency": "USD",
+        "subtotal": 17564.25,
+        "tax": 1449.05,
+        "total": 19013.3,
+        "line_items": [
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 10,
+            "unit_price": 89.5,
+            "amount": 895
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 5,
+            "unit_price": 125,
+            "amount": 625
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 3,
+            "unit_price": 14.75,
+            "amount": 44.25
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640,
+            "amount": 16000
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3094,
+      "output_tokens": 511,
+      "cost_usd": 0.011297999999999999,
+      "seconds": 4.586178799858317,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_20.pdf",
+      "layout": "euro",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-72660",
+        "invoice_date": "2026-03-18",
+        "due_date": "2026-04-17",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "EUR",
+        "subtotal": 12118.4,
+        "tax": 2302.5,
+        "total": 14420.9,
+        "line_items": [
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 12,
+            "unit_price": 23.95,
+            "amount": 287.4
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 1,
+            "unit_price": 148,
+            "amount": 148
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 5,
+            "unit_price": 1850,
+            "amount": 9250
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 25,
+            "unit_price": 54,
+            "amount": 1350
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 10,
+            "unit_price": 76.8,
+            "amount": 768
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 1,
+            "unit_price": 315,
+            "amount": 315
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3228,
+      "output_tokens": 582,
+      "cost_usd": 0.012276,
+      "seconds": 4.728503900114447,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_21.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Bluebird Logistics LLC",
+        "invoice_number": "MIS-71660",
+        "invoice_date": "2026-02-15",
+        "due_date": "2026-03-17",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 31803.14,
+        "tax": 0,
+        "total": 30212.98,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 4,
+            "unit_price": 1850,
+            "amount": 7400
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 4,
+            "unit_price": 23.95,
+            "amount": 95.8
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 1,
+            "unit_price": 148,
+            "amount": 148
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 3,
+            "unit_price": 89.5,
+            "amount": 268.5
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 1200,
+            "unit_price": 0.42,
+            "amount": 504
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 4,
+            "unit_price": 41,
+            "amount": 164
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 4,
+            "unit_price": 64,
+            "amount": 256
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 25,
+            "unit_price": 76.8,
+            "amount": 1920
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 4,
+            "unit_price": 212.4,
+            "amount": 849.6
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 5,
+            "unit_price": 95,
+            "amount": 475
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 2,
+            "unit_price": 315,
+            "amount": 630
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 10,
+            "unit_price": 110,
+            "amount": 1100
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 3,
+            "unit_price": 14.75,
+            "amount": 44.25
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 1,
+            "unit_price": 42.99,
+            "amount": 42.99
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 12,
+            "unit_price": 125,
+            "amount": 1500
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 10,
+            "unit_price": 38.25,
+            "amount": 382.5
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 5,
+            "unit_price": 4.5,
+            "amount": 22.5
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640,
+            "amount": 16000
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 5013,
+      "output_tokens": 1381,
+      "cost_usd": 0.023836000000000003,
+      "seconds": 8.562742199981585,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_22.pdf",
+      "layout": "form",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Cedar & Pine Facilities",
+        "invoice_number": "PI/26/43767",
+        "invoice_date": "2026-02-02",
+        "due_date": "2026-02-17",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 3616,
+        "tax": 226,
+        "total": 3842,
+        "line_items": [
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315,
+            "amount": 945
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 25,
+            "unit_price": 95,
+            "amount": 2375
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 2,
+            "unit_price": 148,
+            "amount": 296
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2828,
+      "output_tokens": 330,
+      "cost_usd": 0.008955999999999999,
+      "seconds": 3.5527993000578135,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_23.png",
+      "layout": "lettered",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Meridian IT Services",
+        "invoice_number": "A57701",
+        "invoice_date": "2026-02-13",
+        "due_date": "2026-03-15",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 2520.75,
+        "tax": 157.55,
+        "total": 2678.3,
+        "line_items": [
+          {
+            "description": "Boxed lunch",
+            "quantity": 1,
+            "unit_price": 14.75,
+            "amount": 14.75
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 1,
+            "unit_price": 125,
+            "amount": 125
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95,
+            "amount": 95
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 12,
+            "unit_price": 189,
+            "amount": 2268
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 4,
+            "unit_price": 4.5,
+            "amount": 18
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4170,
+      "output_tokens": 494,
+      "cost_usd": 0.01328,
+      "seconds": 4.4694703000131994,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_24.pdf",
+      "layout": "modern",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Kestrel Print Works",
+        "invoice_number": "87093",
+        "invoice_date": "2026-07-10",
+        "due_date": "2026-08-24",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 1360.0,
+        "tax": 90.44,
+        "total": 1382.44,
+        "line_items": [
+          {
+            "description": "Service technician hour",
+            "quantity": 10,
+            "unit_price": 95.0,
+            "amount": 950.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 10,
+            "unit_price": 41.0,
+            "amount": 410.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2828,
+      "output_tokens": 209,
+      "cost_usd": 0.007745999999999999,
+      "seconds": 2.917347399983555,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_25.pdf",
+      "layout": "statement",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "ST-94908",
+        "invoice_date": "2026-01-06",
+        "due_date": "2026-02-20",
+        "bill_to": "Prairie Credit Union",
+        "currency": "USD",
+        "subtotal": 3037.0,
+        "tax": 212.59,
+        "total": 3249.59,
+        "line_items": [
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 4,
+            "unit_price": 640.0,
+            "amount": 2560.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 4,
+            "unit_price": 4.5,
+            "amount": 18.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 12,
+            "unit_price": 38.25,
+            "amount": 459.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3036,
+      "output_tokens": 474,
+      "cost_usd": 0.010811999999999999,
+      "seconds": 4.4400180000811815,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_26.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Atlas Janitorial Co.",
+        "invoice_number": "A76884",
+        "invoice_date": "2026-02-03",
+        "due_date": "2026-03-05",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 19635.45,
+        "tax": 1619.92,
+        "total": 21255.37,
+        "line_items": [
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 5,
+            "unit_price": 4.5,
+            "amount": 22.5
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 1,
+            "unit_price": 14.75,
+            "amount": 14.75
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 10,
+            "unit_price": 1850,
+            "amount": 18500
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 2,
+            "unit_price": 76.8,
+            "amount": 153.6
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95,
+            "amount": 95
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 4,
+            "unit_price": 212.4,
+            "amount": 849.6
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3150,
+      "output_tokens": 637,
+      "cost_usd": 0.01267,
+      "seconds": 5.128451199969277,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_27.pdf",
+      "layout": "statement",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Brightline Electrical",
+        "invoice_number": "ST-82635",
+        "invoice_date": "2026-05-12",
+        "due_date": "2026-06-11",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 956.86,
+        "tax": 66.98,
+        "total": 1023.84,
+        "line_items": [
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 1,
+            "unit_price": 212.4,
+            "amount": 212.4
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 4,
+            "unit_price": 42.99,
+            "amount": 171.96
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 5,
+            "unit_price": 89.5,
+            "amount": 447.5
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 1,
+            "unit_price": 125.0,
+            "amount": 125.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2828,
+      "output_tokens": 298,
+      "cost_usd": 0.008636,
+      "seconds": 3.4346530998591334,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_28.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Verde Catering Group",
+        "invoice_number": "MIS-77250",
+        "invoice_date": "2026-03-19",
+        "due_date": "2026-04-03",
+        "bill_to": "Prairie Credit Union",
+        "currency": "USD",
+        "subtotal": 20908.09,
+        "tax": 1463.57,
+        "total": 22371.66,
+        "line_items": [
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 5,
+            "unit_price": 54.0,
+            "amount": 270.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 12,
+            "unit_price": 148.0,
+            "amount": 1776.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 4,
+            "unit_price": 315.0,
+            "amount": 1260.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 12,
+            "unit_price": 76.8,
+            "amount": 921.6
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 5,
+            "unit_price": 640.0,
+            "amount": 3200.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 4,
+            "unit_price": 89.5,
+            "amount": 358.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 1,
+            "unit_price": 42.99,
+            "amount": 42.99
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 12,
+            "unit_price": 110.0,
+            "amount": 1320.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 2,
+            "unit_price": 1850.0,
+            "amount": 3700.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 1,
+            "unit_price": 14.75,
+            "amount": 14.75
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 12,
+            "unit_price": 4.5,
+            "amount": 54.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 5,
+            "unit_price": 64.0,
+            "amount": 320.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 4,
+            "unit_price": 38.25,
+            "amount": 153.0
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 12,
+            "unit_price": 125.0,
+            "amount": 1500.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 3,
+            "unit_price": 41.0,
+            "amount": 123.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 5,
+            "unit_price": 23.95,
+            "amount": 119.75
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 25,
+            "unit_price": 189.0,
+            "amount": 4725.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 5014,
+      "output_tokens": 1318,
+      "cost_usd": 0.023208,
+      "seconds": 7.857803999911994,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_29.png",
+      "layout": "receipt",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Summit Safety Equipment",
+        "invoice_number": "R34749",
+        "invoice_date": "2026-05-24",
+        "due_date": "2026-06-08",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 4081.25,
+        "tax": 0,
+        "total": 4081.25,
+        "line_items": [
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 5,
+            "unit_price": 41.0,
+            "amount": 205.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 12,
+            "unit_price": 315.0,
+            "amount": 3780.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 5,
+            "unit_price": 14.75,
+            "amount": 73.75
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 5,
+            "unit_price": 4.5,
+            "amount": 22.5
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2461,
+      "output_tokens": 460,
+      "cost_usd": 0.009522,
+      "seconds": 4.062256299890578,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "test_30.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "INV-18204",
+        "invoice_date": "2026-07-06",
+        "due_date": "2026-07-21",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 29277.2,
+        "tax": 1738.33,
+        "total": 29551.67,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 5,
+            "unit_price": 1850,
+            "amount": 9250
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 10,
+            "unit_price": 64,
+            "amount": 640
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 25,
+            "unit_price": 110,
+            "amount": 2750
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640,
+            "amount": 16000
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 3,
+            "unit_price": 212.4,
+            "amount": 637.2
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 3122,
+      "output_tokens": 677,
+      "cost_usd": 0.013014000000000001,
+      "seconds": 5.738362400094047,
+      "model": "claude-sonnet-5-5",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    }
+  ]
+}

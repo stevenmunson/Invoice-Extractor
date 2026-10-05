@@ -1,0 +1,602 @@
+{
+  "invoice_04.pdf": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Kestrel Print Works",
+      "invoice_number": "A66078",
+      "invoice_date": "2026-04-12",
+      "due_date": "2026-05-12",
+      "bill_to": "Harborview Hotel Group",
+      "currency": "USD",
+      "subtotal": 3811.73,
+      "tax": 226.32,
+      "total": 3847.46,
+      "line_items": [
+        {
+          "description": "Floor stripping & waxing (sq ft)",
+          "quantity": 4000,
+          "unit_price": 0.42,
+          "amount": 1680.0
+        },
+        {
+          "description": "Service technician hour",
+          "quantity": 1,
+          "unit_price": 95.0,
+          "amount": 95.0
+        },
+        {
+          "description": "Copy paper, 10 ream case",
+          "quantity": 12,
+          "unit_price": 42.99,
+          "amount": 515.88
+        },
+        {
+          "description": "LED panel retrofit",
+          "quantity": 1,
+          "unit_price": 189.0,
+          "amount": 189.0
+        },
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 3,
+          "unit_price": 23.95,
+          "amount": 71.85
+        },
+        {
+          "description": "Pallet freight - LTL",
+          "quantity": 4,
+          "unit_price": 315.0,
+          "amount": 1260.0
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Kestrel Print Works",
+      "invoice_number": "A66078",
+      "invoice_date": "2026-04-12",
+      "due_date": "2026-05-12",
+      "bill_to": "Harborview Hotel Group",
+      "currency": "USD",
+      "subtotal": 3811.73,
+      "tax": 226.32,
+      "total": 3847.46,
+      "line_items": [
+        {
+          "description": "Floor stripping & waxing (sq ft)",
+          "quantity": 4000.0,
+          "unit_price": 0.42,
+          "amount": 1680.0
+        },
+        {
+          "description": "Service technician hour",
+          "quantity": 1.0,
+          "unit_price": 95.0,
+          "amount": 95.0
+        },
+        {
+          "description": "Copy paper, 10 ream case",
+          "quantity": 12.0,
+          "unit_price": 42.99,
+          "amount": 515.88
+        },
+        {
+          "description": "LED panel retrofit",
+          "quantity": 1.0,
+          "unit_price": 189.0,
+          "amount": 189.0
+        },
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 3.0,
+          "unit_price": 23.95,
+          "amount": 71.85
+        },
+        {
+          "description": "Pallet freight - LTL",
+          "quantity": 4.0,
+          "unit_price": 315.0,
+          "amount": 1260.0
+        }
+      ]
+    },
+    "note": "",
+    "reviewed_at": "2026-10-04T14:31:34"
+  },
+  "invoice_07.pdf": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "BRIGHTLINE ELECTRICAL",
+      "invoice_number": "10216",
+      "invoice_date": "2026-06-07",
+      "due_date": "2026-06-22",
+      "bill_to": "Ridgeview Manufacturing Inc.",
+      "currency": "USD",
+      "subtotal": 1176.25,
+      "tax": 92.19,
+      "total": 1209.63,
+      "line_items": [
+        {
+          "description": "Safety glasses (box of 12)",
+          "quantity": 1,
+          "unit_price": 41.0,
+          "amount": 41.0
+        },
+        {
+          "description": "Toner cartridge HP 58A",
+          "quantity": 2,
+          "unit_price": 89.5,
+          "amount": 179.0
+        },
+        {
+          "description": "Fuel surcharge",
+          "quantity": 25,
+          "unit_price": 38.25,
+          "amount": 956.25
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "BRIGHTLINE ELECTRICAL",
+      "invoice_number": "10216",
+      "invoice_date": "2026-06-07",
+      "due_date": "2026-06-22",
+      "bill_to": "Ridgeview Manufacturing Inc.",
+      "currency": "USD",
+      "subtotal": 1176.25,
+      "tax": 92.19,
+      "total": 1209.63,
+      "line_items": [
+        {
+          "description": "Safety glasses (box of 12)",
+          "quantity": 1.0,
+          "unit_price": 41.0,
+          "amount": 41.0
+        },
+        {
+          "description": "Toner cartridge HP 58A",
+          "quantity": 2.0,
+          "unit_price": 89.5,
+          "amount": 179.0
+        },
+        {
+          "description": "Fuel surcharge",
+          "quantity": 25.0,
+          "unit_price": 38.25,
+          "amount": 956.25
+        }
+      ]
+    },
+    "note": "Line items evaluated correctly",
+    "reviewed_at": "2026-10-04T14:33:01"
+  },
+  "invoice_19.pdf": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Halvorsen Industrietechnik GmbH",
+      "invoice_number": "RE-2026-8261",
+      "invoice_date": "2026-04-21",
+      "due_date": "2026-05-06",
+      "bill_to": "Silverline Dental",
+      "currency": "EUR",
+      "subtotal": 19681.3,
+      "tax": 3552.47,
+      "total": 22249.7,
+      "line_items": [
+        {
+          "description": "Vinyl banner 3x8 ft",
+          "quantity": 2,
+          "unit_price": 148.0,
+          "amount": 296.0
+        },
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 10,
+          "unit_price": 1850.0,
+          "amount": 18500.0
+        },
+        {
+          "description": "Laptop setup & imaging",
+          "quantity": 5,
+          "unit_price": 125.0,
+          "amount": 625.0
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 1,
+          "unit_price": 212.4,
+          "amount": 212.4
+        },
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 2,
+          "unit_price": 23.95,
+          "amount": 47.9
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Halvorsen Industrietechnik GmbH",
+      "invoice_number": "RE-2026-8261",
+      "invoice_date": "2026-04-21",
+      "due_date": "2026-05-06",
+      "bill_to": "Silverline Dental",
+      "currency": "EUR",
+      "subtotal": 19681.3,
+      "tax": 3552.47,
+      "total": 22249.7,
+      "line_items": [
+        {
+          "description": "Vinyl banner 3x8 ft",
+          "quantity": 2.0,
+          "unit_price": 148.0,
+          "amount": 296.0
+        },
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 10.0,
+          "unit_price": 1850.0,
+          "amount": 18500.0
+        },
+        {
+          "description": "Laptop setup & imaging",
+          "quantity": 5.0,
+          "unit_price": 125.0,
+          "amount": 625.0
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 1.0,
+          "unit_price": 212.4,
+          "amount": 212.4
+        },
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 2.0,
+          "unit_price": 23.95,
+          "amount": 47.9
+        }
+      ]
+    },
+    "note": "Flag is due to AI uncertainty about what balance VAT is calculated upon",
+    "reviewed_at": "2026-10-04T14:35:36"
+  },
+  "invoice_28.pdf": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Verde Catering Group",
+      "invoice_number": "R54855",
+      "invoice_date": "2026-01-13",
+      "due_date": "2026-02-27",
+      "bill_to": "Harborview Hotel Group",
+      "currency": "USD",
+      "subtotal": 21234.9,
+      "tax": 0,
+      "total": 21234.9,
+      "line_items": [
+        {
+          "description": "Boxed lunch",
+          "quantity": 10,
+          "unit_price": 14.75,
+          "amount": 147.5
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 1,
+          "unit_price": 212.4,
+          "amount": 212.4
+        },
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 10,
+          "unit_price": 1850.0,
+          "amount": 18500.0
+        },
+        {
+          "description": "Service technician hour",
+          "quantity": 25,
+          "unit_price": 95.0,
+          "amount": 2375.0
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Verde Catering Group",
+      "invoice_number": "R54855",
+      "invoice_date": "2026-01-13",
+      "due_date": "2026-02-27",
+      "bill_to": "Harborview Hotel Group",
+      "currency": "USD",
+      "subtotal": 21234.9,
+      "tax": 0.0,
+      "total": 21234.9,
+      "line_items": [
+        {
+          "description": "Boxed lunch",
+          "quantity": 10.0,
+          "unit_price": 14.75,
+          "amount": 147.5
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 1.0,
+          "unit_price": 212.4,
+          "amount": 212.4
+        },
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 10.0,
+          "unit_price": 1850.0,
+          "amount": 18500.0
+        },
+        {
+          "description": "Service technician hour",
+          "quantity": 25.0,
+          "unit_price": 95.0,
+          "amount": 2375.0
+        }
+      ]
+    },
+    "note": "",
+    "reviewed_at": "2026-10-04T14:35:52"
+  },
+  "invoice_29.png": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Summit Safety Equipment",
+      "invoice_number": "INV-40029",
+      "invoice_date": "2026-03-29",
+      "due_date": "2026-04-28",
+      "bill_to": "Riverbend Foods Co.",
+      "currency": "USD",
+      "subtotal": 9.0,
+      "tax": 0.6,
+      "total": 9.15,
+      "line_items": [
+        {
+          "description": "Coffee service (per guest)",
+          "quantity": 2,
+          "unit_price": 4.5,
+          "amount": 9.0
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Summit Safety Equipment",
+      "invoice_number": "INV-40029",
+      "invoice_date": "2026-03-29",
+      "due_date": "2026-04-28",
+      "bill_to": "Riverbend Foods Co.",
+      "currency": "USD",
+      "subtotal": 9.0,
+      "tax": 0.6,
+      "total": 9.15,
+      "line_items": [
+        {
+          "description": "Coffee service (per guest)",
+          "quantity": 2.0,
+          "unit_price": 4.5,
+          "amount": 9.0
+        }
+      ]
+    },
+    "note": "",
+    "reviewed_at": "2026-10-04T14:36:13"
+  },
+  "invoice_30.pdf": {
+    "status": "approved",
+    "queue": "flagged",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Northwind Office Supply",
+      "invoice_number": "R60373",
+      "invoice_date": "2026-05-21",
+      "due_date": "2026-06-05",
+      "bill_to": "Oakmont School District",
+      "currency": "USD",
+      "subtotal": 46250.0,
+      "tax": 3237.5,
+      "total": 49487.5,
+      "line_items": [
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 25,
+          "unit_price": 1850.0,
+          "amount": 46250.0
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Northwind Office Supply",
+      "invoice_number": "R60373",
+      "invoice_date": "2026-05-21",
+      "due_date": "2026-06-05",
+      "bill_to": "Oakmont School District",
+      "currency": "USD",
+      "subtotal": 46250.0,
+      "tax": 3237.5,
+      "total": 49487.5,
+      "line_items": [
+        {
+          "description": "Managed IT support - monthly",
+          "quantity": 25.0,
+          "unit_price": 1850.0,
+          "amount": 46250.0
+        }
+      ]
+    },
+    "note": "This flag seems like a possible hallucination",
+    "reviewed_at": "2026-10-04T14:37:46"
+  },
+  "invoice_02.pdf": {
+    "status": "approved",
+    "queue": "spot_check",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "CEDAR & PINE FACILITIES",
+      "invoice_number": "56272",
+      "invoice_date": "2026-08-27",
+      "due_date": "2026-09-26",
+      "bill_to": "Riverbend Foods Co.",
+      "currency": "USD",
+      "subtotal": 4251.5,
+      "tax": 265.72,
+      "total": 4517.22,
+      "line_items": [
+        {
+          "description": "Safety glasses (box of 12)",
+          "quantity": 25,
+          "unit_price": 41.0,
+          "amount": 1025.0
+        },
+        {
+          "description": "Pallet freight - LTL",
+          "quantity": 10,
+          "unit_price": 315.0,
+          "amount": 3150.0
+        },
+        {
+          "description": "Fuel surcharge",
+          "quantity": 2,
+          "unit_price": 38.25,
+          "amount": 76.5
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "CEDAR & PINE FACILITIES",
+      "invoice_number": "56272",
+      "invoice_date": "2026-08-27",
+      "due_date": "2026-09-26",
+      "bill_to": "Riverbend Foods Co.",
+      "currency": "USD",
+      "subtotal": 4251.5,
+      "tax": 265.72,
+      "total": 4517.22,
+      "line_items": [
+        {
+          "description": "Safety glasses (box of 12)",
+          "quantity": 25.0,
+          "unit_price": 41.0,
+          "amount": 1025.0
+        },
+        {
+          "description": "Pallet freight - LTL",
+          "quantity": 10.0,
+          "unit_price": 315.0,
+          "amount": 3150.0
+        },
+        {
+          "description": "Fuel surcharge",
+          "quantity": 2.0,
+          "unit_price": 38.25,
+          "amount": 76.5
+        }
+      ]
+    },
+    "note": "",
+    "reviewed_at": "2026-10-04T14:39:20"
+  },
+  "invoice_06.pdf": {
+    "status": "approved",
+    "queue": "spot_check",
+    "changed_fields": [],
+    "original": {
+      "vendor_name": "Atlas Janitorial Co.",
+      "invoice_number": "A9158",
+      "invoice_date": "2026-06-12",
+      "due_date": "2026-07-12",
+      "bill_to": "Granite Peak Construction",
+      "currency": "USD",
+      "subtotal": 13039.9,
+      "tax": 912.79,
+      "total": 13952.69,
+      "line_items": [
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 12,
+          "unit_price": 23.95,
+          "amount": 287.4
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 25,
+          "unit_price": 212.4,
+          "amount": 5310.0
+        },
+        {
+          "description": "HVAC quarterly maintenance",
+          "quantity": 10,
+          "unit_price": 640.0,
+          "amount": 6400.0
+        },
+        {
+          "description": "Boxed lunch",
+          "quantity": 10,
+          "unit_price": 14.75,
+          "amount": 147.5
+        },
+        {
+          "description": "Toner cartridge HP 58A",
+          "quantity": 10,
+          "unit_price": 89.5,
+          "amount": 895.0
+        }
+      ]
+    },
+    "final": {
+      "vendor_name": "Atlas Janitorial Co.",
+      "invoice_number": "A9158",
+      "invoice_date": "2026-06-12",
+      "due_date": "2026-07-12",
+      "bill_to": "Granite Peak Construction",
+      "currency": "USD",
+      "subtotal": 13039.9,
+      "tax": 912.79,
+      "total": 13952.69,
+      "line_items": [
+        {
+          "description": "Hard hat, Class E",
+          "quantity": 12.0,
+          "unit_price": 23.95,
+          "amount": 287.4
+        },
+        {
+          "description": "Hydraulic coupling DN25",
+          "quantity": 25.0,
+          "unit_price": 212.4,
+          "amount": 5310.0
+        },
+        {
+          "description": "HVAC quarterly maintenance",
+          "quantity": 10.0,
+          "unit_price": 640.0,
+          "amount": 6400.0
+        },
+        {
+          "description": "Boxed lunch",
+          "quantity": 10.0,
+          "unit_price": 14.75,
+          "amount": 147.5
+        },
+        {
+          "description": "Toner cartridge HP 58A",
+          "quantity": 10.0,
+          "unit_price": 89.5,
+          "amount": 895.0
+        }
+      ]
+    },
+    "note": "",
+    "reviewed_at": "2026-10-04T14:40:43"
+  }
+}

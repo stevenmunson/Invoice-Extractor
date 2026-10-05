@@ -1,0 +1,2309 @@
+{
+  "method": "claude",
+  "model": "claude-haiku-4-5-20251001",
+  "dataset": "practice",
+  "prompt_version": "v1",
+  "prompt": "You are extracting data from a business invoice for an accounts-payable system.\nRead the whole document (all pages) and return the invoice's data as JSON.\n\nRules:\n- Dates: output YYYY-MM-DD. Watch for day-first European formats (e.g. 05.03.2026 is 5 March).\n- Numbers: plain numbers with no currency symbols or thousands separators. European \"1.234,56\" is 1234.56.\n- If there is a discount, subtotal is the amount BEFORE the discount.\n- Don't confuse the invoice number with PO numbers, order references or customer IDs.\n- If something is unreadable or the line items don't add up to the subtotal, set needs_review=true and say why.\n-Sometimes an invoice will be billed to an accounting department at the company (e.g. Accounts Payable). Remove the department name and return only the company name\n",
+  "run_at": "2026-10-04T14:12:00",
+  "summary": {
+    "documents": 30,
+    "overall_accuracy": 1.0,
+    "perfect_documents": 30,
+    "per_field": {
+      "vendor_name": 1.0,
+      "invoice_number": 1.0,
+      "invoice_date": 1.0,
+      "due_date": 1.0,
+      "bill_to": 1.0,
+      "currency": 1.0,
+      "subtotal": 1.0,
+      "tax": 1.0,
+      "total": 1.0,
+      "line_items": 1.0
+    },
+    "flagged_for_review": 6,
+    "errors": 0,
+    "total_cost_usd": 0.136012,
+    "avg_cost_usd": 0.004533733333333333,
+    "max_cost_usd": 0.007758,
+    "avg_seconds": 3.820706856662097,
+    "input_tokens": 90937,
+    "output_tokens": 9015
+  },
+  "rows": [
+    {
+      "file": "invoice_01.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Bluebird Logistics LLC",
+        "invoice_number": "MIS-11728",
+        "invoice_date": "2026-06-28",
+        "due_date": "2026-07-13",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 24497.05,
+        "tax": 1531.07,
+        "total": 26028.12,
+        "line_items": [
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 3,
+            "unit_price": 125.0,
+            "amount": 375.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 5,
+            "unit_price": 89.5,
+            "amount": 447.5
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 1,
+            "unit_price": 4.5,
+            "amount": 4.5
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640.0,
+            "amount": 16000.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 1,
+            "unit_price": 148.0,
+            "amount": 148.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 1,
+            "unit_price": 1850.0,
+            "amount": 1850.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 12,
+            "unit_price": 64.0,
+            "amount": 768.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 25,
+            "unit_price": 23.95,
+            "amount": 598.75
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 10,
+            "unit_price": 110.0,
+            "amount": 1100.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 5,
+            "unit_price": 14.75,
+            "amount": 73.75
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 12,
+            "unit_price": 76.8,
+            "amount": 921.6
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 5,
+            "unit_price": 42.99,
+            "amount": 214.95
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4577,
+      "output_tokens": 510,
+      "cost_usd": 0.0071270000000000005,
+      "seconds": 5.519534300081432,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_02.pdf",
+      "layout": "modern",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "CEDAR & PINE FACILITIES",
+        "invoice_number": "56272",
+        "invoice_date": "2026-08-27",
+        "due_date": "2026-09-26",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 4251.5,
+        "tax": 265.72,
+        "total": 4517.22,
+        "line_items": [
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 25,
+            "unit_price": 41.0,
+            "amount": 1025.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 10,
+            "unit_price": 315.0,
+            "amount": 3150.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 2,
+            "unit_price": 38.25,
+            "amount": 76.5
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2776,
+      "output_tokens": 188,
+      "cost_usd": 0.0037159999999999997,
+      "seconds": 3.211044399999082,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_03.pdf",
+      "layout": "euro",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-92945",
+        "invoice_date": "2026-01-16",
+        "due_date": "2026-03-02",
+        "bill_to": "Granite Peak Construction",
+        "currency": "EUR",
+        "subtotal": 961.0,
+        "tax": 182.59,
+        "total": 1143.59,
+        "line_items": [
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95.0,
+            "amount": 95.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 1,
+            "unit_price": 110.0,
+            "amount": 110.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 4,
+            "unit_price": 189.0,
+            "amount": 756.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2811,
+      "output_tokens": 186,
+      "cost_usd": 0.003741,
+      "seconds": 2.413127699866891,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_04.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Kestrel Print Works",
+        "invoice_number": "A66078",
+        "invoice_date": "2026-04-12",
+        "due_date": "2026-05-12",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 3811.73,
+        "tax": 226.32,
+        "total": 3847.46,
+        "line_items": [
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 4000,
+            "unit_price": 0.42,
+            "amount": 1680.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95.0,
+            "amount": 95.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 12,
+            "unit_price": 42.99,
+            "amount": 515.88
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 1,
+            "unit_price": 189.0,
+            "amount": 189.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 3,
+            "unit_price": 23.95,
+            "amount": 71.85
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 4,
+            "unit_price": 315.0,
+            "amount": 1260.0
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Subtotal $3,811.73 minus 5% discount $190.59 equals $3,621.14, plus 6.25% tax should be $226.32 on $3,621.14, but total stated is $3,847.46. Math discrepancy in discount/tax application."
+      },
+      "input_tokens": 2881,
+      "output_tokens": 345,
+      "cost_usd": 0.004606,
+      "seconds": 4.219136599916965,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_05.png",
+      "layout": "modern",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "NORTHWIND OFFICE SUPPLY",
+        "invoice_number": "11876",
+        "invoice_date": "2026-03-01",
+        "due_date": "2026-03-16",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 352.2,
+        "tax": 24.65,
+        "total": 376.85,
+        "line_items": [
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 4,
+            "unit_price": 76.8,
+            "amount": 307.2
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 10,
+            "unit_price": 4.5,
+            "amount": 45.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2559,
+      "output_tokens": 152,
+      "cost_usd": 0.003319,
+      "seconds": 3.3715780000202358,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_06.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Atlas Janitorial Co.",
+        "invoice_number": "A9158",
+        "invoice_date": "2026-06-12",
+        "due_date": "2026-07-12",
+        "bill_to": "Granite Peak Construction",
+        "currency": "USD",
+        "subtotal": 13039.9,
+        "tax": 912.79,
+        "total": 13952.69,
+        "line_items": [
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 12,
+            "unit_price": 23.95,
+            "amount": 287.4
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 25,
+            "unit_price": 212.4,
+            "amount": 5310.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 10,
+            "unit_price": 640.0,
+            "amount": 6400.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 10,
+            "unit_price": 14.75,
+            "amount": 147.5
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 10,
+            "unit_price": 89.5,
+            "amount": 895.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2841,
+      "output_tokens": 293,
+      "cost_usd": 0.004306000000000001,
+      "seconds": 4.165675000054762,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_07.pdf",
+      "layout": "modern",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "BRIGHTLINE ELECTRICAL",
+        "invoice_number": "10216",
+        "invoice_date": "2026-06-07",
+        "due_date": "2026-06-22",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 1176.25,
+        "tax": 92.19,
+        "total": 1209.63,
+        "line_items": [
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 1,
+            "unit_price": 41.0,
+            "amount": 41.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 2,
+            "unit_price": 89.5,
+            "amount": 179.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 25,
+            "unit_price": 38.25,
+            "amount": 956.25
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Subtotal ($1,176.25) minus discount ($58.81) plus tax ($92.19) equals $1,209.63, which matches Balance Due. However, the 'Fuel surcharge' line item has quantity 25 and unit_price $38.25, which is unusual - this may need verification as it's unclear if this represents 25 units or a different calculation method."
+      },
+      "input_tokens": 2599,
+      "output_tokens": 273,
+      "cost_usd": 0.0039640000000000005,
+      "seconds": 3.7972838999703526,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_08.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Verde Catering Group",
+        "invoice_number": "INV-27897",
+        "invoice_date": "2026-05-13",
+        "due_date": "2026-05-28",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 9790.0,
+        "tax": 611.88,
+        "total": 10401.88,
+        "line_items": [
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 1,
+            "unit_price": 110.0,
+            "amount": 110.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 5,
+            "unit_price": 148.0,
+            "amount": 740.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 4,
+            "unit_price": 315.0,
+            "amount": 1260.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 12,
+            "unit_price": 640.0,
+            "amount": 7680.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2791,
+      "output_tokens": 266,
+      "cost_usd": 0.004121,
+      "seconds": 3.8502277999650687,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_09.pdf",
+      "layout": "receipt",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Summit Safety Equipment",
+        "invoice_number": "R53518",
+        "invoice_date": "2026-07-26",
+        "due_date": "2026-08-10",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 5888.75,
+        "tax": 368.05,
+        "total": 6256.8,
+        "line_items": [
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 25,
+            "unit_price": 64.0,
+            "amount": 1600.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 25,
+            "unit_price": 14.75,
+            "amount": 368.75
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 25,
+            "unit_price": 95.0,
+            "amount": 2375.0
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 5,
+            "unit_price": 54.0,
+            "amount": 270.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 3,
+            "unit_price": 110.0,
+            "amount": 330.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2623,
+      "output_tokens": 331,
+      "cost_usd": 0.0042780000000000006,
+      "seconds": 3.446864499943331,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_10.pdf",
+      "layout": "modern",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "NORTHWIND OFFICE SUPPLY",
+        "invoice_number": "14389",
+        "invoice_date": "2026-01-21",
+        "due_date": "2026-02-05",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 10568.0,
+        "tax": 871.86,
+        "total": 11439.86,
+        "line_items": [
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 5,
+            "unit_price": 110.0,
+            "amount": 550.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 12,
+            "unit_price": 64.0,
+            "amount": 768.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 5,
+            "unit_price": 1850.0,
+            "amount": 9250.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2775,
+      "output_tokens": 223,
+      "cost_usd": 0.0038900000000000002,
+      "seconds": 2.8498058998957276,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_11.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Bluebird Logistics LLC",
+        "invoice_number": "A52883",
+        "invoice_date": "2026-01-23",
+        "due_date": "2026-03-09",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 5191.5,
+        "tax": 428.3,
+        "total": 5619.8,
+        "line_items": [
+          {
+            "description": "Service technician hour",
+            "quantity": 3,
+            "unit_price": 95.0,
+            "amount": 285.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 12,
+            "unit_price": 315.0,
+            "amount": 3780.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 2,
+            "unit_price": 38.25,
+            "amount": 76.5
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2820,
+      "output_tokens": 217,
+      "cost_usd": 0.003905,
+      "seconds": 2.7794526999350637,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_12.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Cedar & Pine Facilities",
+        "invoice_number": "MIS-47371",
+        "invoice_date": "2026-01-16",
+        "due_date": "2026-03-02",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 54465.45,
+        "tax": 3404.09,
+        "total": 57869.54,
+        "line_items": [
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 1,
+            "unit_price": 640.0,
+            "amount": 640.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 25,
+            "unit_price": 42.99,
+            "amount": 1074.75
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 2,
+            "unit_price": 41.0,
+            "amount": 82.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 10,
+            "unit_price": 189.0,
+            "amount": 1890.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 3,
+            "unit_price": 4.5,
+            "amount": 13.5
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 3,
+            "unit_price": 148.0,
+            "amount": 444.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 1,
+            "unit_price": 76.8,
+            "amount": 76.8
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 4,
+            "unit_price": 14.75,
+            "amount": 59.0
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 3,
+            "unit_price": 125.0,
+            "amount": 375.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 4,
+            "unit_price": 212.4,
+            "amount": 849.6
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 25,
+            "unit_price": 54.0,
+            "amount": 1350.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 5,
+            "unit_price": 64.0,
+            "amount": 320.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 4,
+            "unit_price": 23.95,
+            "amount": 95.8
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 25,
+            "unit_price": 1850.0,
+            "amount": 46250.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4588,
+      "output_tokens": 533,
+      "cost_usd": 0.007253000000000001,
+      "seconds": 5.871568900067359,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_13.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Meridian IT Services",
+        "invoice_number": "A43727",
+        "invoice_date": "2026-05-23",
+        "due_date": "2026-06-07",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 7845.48,
+        "tax": 0,
+        "total": 7453.21,
+        "line_items": [
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 12,
+            "unit_price": 640.0,
+            "amount": 7680.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 2,
+            "unit_price": 4.5,
+            "amount": 9.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 1,
+            "unit_price": 41.0,
+            "amount": 41.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 2,
+            "unit_price": 14.75,
+            "amount": 29.5
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 2,
+            "unit_price": 42.99,
+            "amount": 85.98
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2839,
+      "output_tokens": 238,
+      "cost_usd": 0.004029,
+      "seconds": 2.908621700014919,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_14.pdf",
+      "layout": "receipt",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Kestrel Print Works",
+        "invoice_number": "R81285",
+        "invoice_date": "2026-04-24",
+        "due_date": "2026-05-24",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 27055.5,
+        "tax": 0,
+        "total": 27055.5,
+        "line_items": [
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 1,
+            "unit_price": 89.5,
+            "amount": 89.5
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 25,
+            "unit_price": 125.0,
+            "amount": 3125.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 12,
+            "unit_price": 1850.0,
+            "amount": 22200.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 25,
+            "unit_price": 64.0,
+            "amount": 1600.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 1,
+            "unit_price": 41.0,
+            "amount": 41.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2403,
+      "output_tokens": 245,
+      "cost_usd": 0.003628,
+      "seconds": 4.243800800060853,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_15.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "MIS-3553",
+        "invoice_date": "2026-07-04",
+        "due_date": "2026-08-03",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 20282.95,
+        "tax": 0,
+        "total": 20282.95,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 5,
+            "unit_price": 1850.0,
+            "amount": 9250.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 2,
+            "unit_price": 189.0,
+            "amount": 378.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 4,
+            "unit_price": 640.0,
+            "amount": 2560.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 2,
+            "unit_price": 76.8,
+            "amount": 153.6
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 12,
+            "unit_price": 38.25,
+            "amount": 459.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 3,
+            "unit_price": 41.0,
+            "amount": 123.0
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 1,
+            "unit_price": 125.0,
+            "amount": 125.0
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 10,
+            "unit_price": 54.0,
+            "amount": 540.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 12,
+            "unit_price": 89.5,
+            "amount": 1074.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 2,
+            "unit_price": 212.4,
+            "amount": 424.8
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 3,
+            "unit_price": 110.0,
+            "amount": 330.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 2,
+            "unit_price": 23.95,
+            "amount": 47.9
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 10,
+            "unit_price": 95.0,
+            "amount": 950.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 25,
+            "unit_price": 14.75,
+            "amount": 368.75
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 5,
+            "unit_price": 315.0,
+            "amount": 1575.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 10,
+            "unit_price": 42.99,
+            "amount": 429.9
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 3,
+            "unit_price": 148.0,
+            "amount": 444.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4643,
+      "output_tokens": 623,
+      "cost_usd": 0.007758,
+      "seconds": 5.9061745998915285,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_16.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Atlas Janitorial Co.",
+        "invoice_number": "MIS-30151",
+        "invoice_date": "2026-01-22",
+        "due_date": "2026-03-08",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 38687.88,
+        "tax": 3191.75,
+        "total": 41879.63,
+        "line_items": [
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 10,
+            "unit_price": 212.4,
+            "amount": 2124.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 4,
+            "unit_price": 14.75,
+            "amount": 59.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 10,
+            "unit_price": 148.0,
+            "amount": 1480.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 2,
+            "unit_price": 23.95,
+            "amount": 47.9
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 25,
+            "unit_price": 315.0,
+            "amount": 7875.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 25,
+            "unit_price": 89.5,
+            "amount": 2237.5
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 4000,
+            "unit_price": 0.42,
+            "amount": 1680.0
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 12,
+            "unit_price": 38.25,
+            "amount": 459.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 5,
+            "unit_price": 189.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 1,
+            "unit_price": 95.0,
+            "amount": 95.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 4,
+            "unit_price": 640.0,
+            "amount": 2560.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 1,
+            "unit_price": 4.5,
+            "amount": 4.5
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 2,
+            "unit_price": 42.99,
+            "amount": 85.98
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 10,
+            "unit_price": 1850.0,
+            "amount": 18500.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 1,
+            "unit_price": 41.0,
+            "amount": 41.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 4,
+            "unit_price": 110.0,
+            "amount": 440.0
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 1,
+            "unit_price": 54.0,
+            "amount": 54.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4647,
+      "output_tokens": 603,
+      "cost_usd": 0.007662,
+      "seconds": 6.01849599997513,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_17.png",
+      "layout": "euro",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-7603",
+        "invoice_date": "2026-02-11",
+        "due_date": "2026-03-13",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "EUR",
+        "subtotal": 1685.8,
+        "tax": 320.3,
+        "total": 2006.1,
+        "line_items": [
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 2,
+            "unit_price": 4.5,
+            "amount": 9.0
+          },
+          {
+            "description": "Restroom supplies kit",
+            "quantity": 1,
+            "unit_price": 76.8,
+            "amount": 76.8
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 25,
+            "unit_price": 64.0,
+            "amount": 1600.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2583,
+      "output_tokens": 191,
+      "cost_usd": 0.003538,
+      "seconds": 2.6850085000041872,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_18.pdf",
+      "layout": "modern",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "VERDE CATERING GROUP",
+        "invoice_number": "14930",
+        "invoice_date": "2026-08-28",
+        "due_date": "2026-09-27",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 3384.1,
+        "tax": 211.51,
+        "total": 3595.61,
+        "line_items": [
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 25,
+            "unit_price": 89.5,
+            "amount": 2237.5
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 25,
+            "unit_price": 42.99,
+            "amount": 1074.75
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 3,
+            "unit_price": 23.95,
+            "amount": 71.85
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2779,
+      "output_tokens": 188,
+      "cost_usd": 0.0037189999999999996,
+      "seconds": 2.564106100006029,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_19.pdf",
+      "layout": "euro",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-8261",
+        "invoice_date": "2026-04-21",
+        "due_date": "2026-05-06",
+        "bill_to": "Silverline Dental",
+        "currency": "EUR",
+        "subtotal": 19681.3,
+        "tax": 3552.47,
+        "total": 22249.7,
+        "line_items": [
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 2,
+            "unit_price": 148.0,
+            "amount": 296.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 10,
+            "unit_price": 1850.0,
+            "amount": 18500.0
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 5,
+            "unit_price": 125.0,
+            "amount": 625.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 1,
+            "unit_price": 212.4,
+            "amount": 212.4
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 2,
+            "unit_price": 23.95,
+            "amount": 47.9
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Line items sum to 19681.30, but after 5% discount (984.07) the subtotal should be 18697.23, not 19681.30. The discount appears to have been calculated and then added back. VAT calculation on 19681.30 at 19% equals 3739.43, not 3552.47 as shown."
+      },
+      "input_tokens": 2879,
+      "output_tokens": 334,
+      "cost_usd": 0.004549,
+      "seconds": 5.174574499949813,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_20.pdf",
+      "layout": "lettered",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "A33040",
+        "invoice_date": "2026-05-21",
+        "due_date": "2026-06-20",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 2321.0,
+        "tax": 191.48,
+        "total": 2512.48,
+        "line_items": [
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 2,
+            "unit_price": 125.0,
+            "amount": 250.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 4,
+            "unit_price": 148.0,
+            "amount": 592.0
+          },
+          {
+            "description": "Toner cartridge HP 58A",
+            "quantity": 12,
+            "unit_price": 89.5,
+            "amount": 1074.0
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 1,
+            "unit_price": 189.0,
+            "amount": 189.0
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 4,
+            "unit_price": 54.0,
+            "amount": 216.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2846,
+      "output_tokens": 249,
+      "cost_usd": 0.004091,
+      "seconds": 2.997991600073874,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_21.pdf",
+      "layout": "euro",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-12764",
+        "invoice_date": "2026-01-24",
+        "due_date": "2026-02-23",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "EUR",
+        "subtotal": 9255.0,
+        "tax": 1670.53,
+        "total": 10462.78,
+        "line_items": [
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 25,
+            "unit_price": 315.0,
+            "amount": 7875.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 3,
+            "unit_price": 110.0,
+            "amount": 330.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2610,
+      "output_tokens": 204,
+      "cost_usd": 0.00363,
+      "seconds": 3.1868697002064437,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_22.pdf",
+      "layout": "receipt",
+      "format": "scanned PDF (image only, no text layer)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Cedar & Pine Facilities",
+        "invoice_number": "R77554",
+        "invoice_date": "2026-07-31",
+        "due_date": "2026-09-14",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 23025.5,
+        "tax": 0,
+        "total": 23025.5,
+        "line_items": [
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 2,
+            "unit_price": 41.0,
+            "amount": 82.0
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 1200,
+            "unit_price": 0.42,
+            "amount": 504.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 25,
+            "unit_price": 212.4,
+            "amount": 5310.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 10,
+            "unit_price": 110.0,
+            "amount": 1100.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 25,
+            "unit_price": 640.0,
+            "amount": 16000.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 2,
+            "unit_price": 14.75,
+            "amount": 29.5
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2515,
+      "output_tokens": 272,
+      "cost_usd": 0.003875,
+      "seconds": 3.3276569000445306,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_23.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Meridian IT Services",
+        "invoice_number": "INV-35807",
+        "invoice_date": "2026-03-06",
+        "due_date": "2026-03-21",
+        "bill_to": "Lakeside Medical Partners",
+        "currency": "USD",
+        "subtotal": 7042.2,
+        "tax": 492.95,
+        "total": 7535.15,
+        "line_items": [
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 1,
+            "unit_price": 4.5,
+            "amount": 4.5
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 25,
+            "unit_price": 125.0,
+            "amount": 3125.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 25,
+            "unit_price": 110.0,
+            "amount": 2750.0
+          },
+          {
+            "description": "Business cards (500)",
+            "quantity": 1,
+            "unit_price": 64.0,
+            "amount": 64.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 25,
+            "unit_price": 42.99,
+            "amount": 1074.75
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 1,
+            "unit_price": 23.95,
+            "amount": 23.95
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2831,
+      "output_tokens": 330,
+      "cost_usd": 0.004481000000000001,
+      "seconds": 3.2125043999403715,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_24.pdf",
+      "layout": "euro",
+      "format": "digital PDF",
+      "due_date_from_terms_only": true,
+      "fields": {
+        "vendor_name": "Halvorsen Industrietechnik GmbH",
+        "invoice_number": "RE-2026-18490",
+        "invoice_date": "2026-06-09",
+        "due_date": "2026-07-24",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "EUR",
+        "subtotal": 1855.0,
+        "tax": 352.45,
+        "total": 2207.45,
+        "line_items": [
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 1200,
+            "unit_price": 0.42,
+            "amount": 504.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 3,
+            "unit_price": 315.0,
+            "amount": 945.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 1,
+            "unit_price": 110.0,
+            "amount": 110.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 2,
+            "unit_price": 148.0,
+            "amount": 296.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2846,
+      "output_tokens": 234,
+      "cost_usd": 0.0040160000000000005,
+      "seconds": 3.0285098999738693,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_25.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "INV-61158",
+        "invoice_date": "2026-01-05",
+        "due_date": "2026-02-04",
+        "bill_to": "Ridgeview Manufacturing Inc.",
+        "currency": "USD",
+        "subtotal": 24550.25,
+        "tax": 1718.52,
+        "total": 26268.77,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 12,
+            "unit_price": 1850.0,
+            "amount": 22200.0
+          },
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 12,
+            "unit_price": 110.0,
+            "amount": 1320.0
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 1,
+            "unit_price": 148.0,
+            "amount": 148.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 25,
+            "unit_price": 14.75,
+            "amount": 368.75
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 3,
+            "unit_price": 4.5,
+            "amount": 13.5
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 4,
+            "unit_price": 125.0,
+            "amount": 500.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2832,
+      "output_tokens": 274,
+      "cost_usd": 0.004202,
+      "seconds": 3.253741300199181,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_26.pdf",
+      "layout": "classic",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Atlas Janitorial Co.",
+        "invoice_number": "INV-80084",
+        "invoice_date": "2026-04-03",
+        "due_date": "2026-04-18",
+        "bill_to": "Silverline Dental",
+        "currency": "USD",
+        "subtotal": 2480.0,
+        "tax": 204.6,
+        "total": 2684.6,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 1,
+            "unit_price": 1850.0,
+            "amount": 1850.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 2,
+            "unit_price": 315.0,
+            "amount": 630.0
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 2759,
+      "output_tokens": 161,
+      "cost_usd": 0.0035640000000000003,
+      "seconds": 2.2630178998224437,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_27.pdf",
+      "layout": "multipage",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Brightline Electrical",
+        "invoice_number": "MIS-87766",
+        "invoice_date": "2026-01-27",
+        "due_date": "2026-02-11",
+        "bill_to": "Prairie Credit Union",
+        "currency": "USD",
+        "subtotal": 16559.4,
+        "tax": 1366.15,
+        "total": 17925.55,
+        "line_items": [
+          {
+            "description": "Electrician labor (hr)",
+            "quantity": 1,
+            "unit_price": 110.0,
+            "amount": 110.0
+          },
+          {
+            "description": "Floor stripping & waxing (sq ft)",
+            "quantity": 2500,
+            "unit_price": 0.42,
+            "amount": 1050.0
+          },
+          {
+            "description": "Copy paper, 10 ream case",
+            "quantity": 5,
+            "unit_price": 42.99,
+            "amount": 214.95
+          },
+          {
+            "description": "Air filter 20x25x1 (12 pk)",
+            "quantity": 10,
+            "unit_price": 54.0,
+            "amount": 540.0
+          },
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 1,
+            "unit_price": 4.5,
+            "amount": 4.5
+          },
+          {
+            "description": "Laptop setup & imaging",
+            "quantity": 3,
+            "unit_price": 125.0,
+            "amount": 375.0
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 1,
+            "unit_price": 212.4,
+            "amount": 212.4
+          },
+          {
+            "description": "LED panel retrofit",
+            "quantity": 4,
+            "unit_price": 189.0,
+            "amount": 756.0
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 4,
+            "unit_price": 1850.0,
+            "amount": 7400.0
+          },
+          {
+            "description": "HVAC quarterly maintenance",
+            "quantity": 5,
+            "unit_price": 640.0,
+            "amount": 3200.0
+          },
+          {
+            "description": "Pallet freight - LTL",
+            "quantity": 1,
+            "unit_price": 315.0,
+            "amount": 315.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 10,
+            "unit_price": 95.0,
+            "amount": 950.0
+          },
+          {
+            "description": "Boxed lunch",
+            "quantity": 10,
+            "unit_price": 14.75,
+            "amount": 147.5
+          },
+          {
+            "description": "Fuel surcharge",
+            "quantity": 1,
+            "unit_price": 38.25,
+            "amount": 38.25
+          },
+          {
+            "description": "Vinyl banner 3x8 ft",
+            "quantity": 5,
+            "unit_price": 148.0,
+            "amount": 740.0
+          },
+          {
+            "description": "Safety glasses (box of 12)",
+            "quantity": 10,
+            "unit_price": 41.0,
+            "amount": 410.0
+          },
+          {
+            "description": "Hard hat, Class E",
+            "quantity": 4,
+            "unit_price": 23.95,
+            "amount": 95.8
+          }
+        ],
+        "needs_review": false,
+        "review_reason": ""
+      },
+      "input_tokens": 4630,
+      "output_tokens": 591,
+      "cost_usd": 0.007585,
+      "seconds": 7.276716499822214,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_28.pdf",
+      "layout": "receipt",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Verde Catering Group",
+        "invoice_number": "R54855",
+        "invoice_date": "2026-01-13",
+        "due_date": "2026-02-27",
+        "bill_to": "Harborview Hotel Group",
+        "currency": "USD",
+        "subtotal": 21234.9,
+        "tax": 0,
+        "total": 21234.9,
+        "line_items": [
+          {
+            "description": "Boxed lunch",
+            "quantity": 10,
+            "unit_price": 14.75,
+            "amount": 147.5
+          },
+          {
+            "description": "Hydraulic coupling DN25",
+            "quantity": 1,
+            "unit_price": 212.4,
+            "amount": 212.4
+          },
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 10,
+            "unit_price": 1850.0,
+            "amount": 18500.0
+          },
+          {
+            "description": "Service technician hour",
+            "quantity": 25,
+            "unit_price": 95.0,
+            "amount": 2375.0
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Invoice contains mixed unrelated line items (catering, hydraulic coupling, IT support, technician hours) from a catering company, which is unusual and warrants verification of accuracy."
+      },
+      "input_tokens": 2571,
+      "output_tokens": 293,
+      "cost_usd": 0.004036,
+      "seconds": 3.232966999989003,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_29.png",
+      "layout": "classic",
+      "format": "scanned image (PNG)",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Summit Safety Equipment",
+        "invoice_number": "INV-40029",
+        "invoice_date": "2026-03-29",
+        "due_date": "2026-04-28",
+        "bill_to": "Riverbend Foods Co.",
+        "currency": "USD",
+        "subtotal": 9.0,
+        "tax": 0.6,
+        "total": 9.15,
+        "line_items": [
+          {
+            "description": "Coffee service (per guest)",
+            "quantity": 2,
+            "unit_price": 4.5,
+            "amount": 9.0
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Discount of $0.45 (5%) was applied to subtotal, reducing it to $8.55, then 7% tax of $0.60 was calculated. The math appears to be: subtotal $9.00 minus 5% discount = $8.55, then 7% tax on $8.55 = $0.60 (rounded), giving total $9.15. However, this treatment of discount and tax application should be verified."
+      },
+      "input_tokens": 2559,
+      "output_tokens": 228,
+      "cost_usd": 0.003699,
+      "seconds": 3.7635242000687867,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    },
+    {
+      "file": "invoice_30.pdf",
+      "layout": "receipt",
+      "format": "digital PDF",
+      "due_date_from_terms_only": false,
+      "fields": {
+        "vendor_name": "Northwind Office Supply",
+        "invoice_number": "R60373",
+        "invoice_date": "2026-05-21",
+        "due_date": "2026-06-05",
+        "bill_to": "Oakmont School District",
+        "currency": "USD",
+        "subtotal": 46250.0,
+        "tax": 3237.5,
+        "total": 49487.5,
+        "line_items": [
+          {
+            "description": "Managed IT support - monthly",
+            "quantity": 25,
+            "unit_price": 1850.0,
+            "amount": 46250.0
+          }
+        ],
+        "needs_review": true,
+        "review_reason": "Tax amount discrepancy: document shows 3,237.50 in first section but 3,237.50 in second section; total shown as 49,487.50 in first section but 49,487.50 in second section - values are consistent but tax calculation appears inconsistent with subtotal (7% tax on 46,250 should be 3,237.50, which matches, but first image shows 3,237.50 while second shows same - no mathematical error found upon review)"
+      },
+      "input_tokens": 2524,
+      "output_tokens": 240,
+      "cost_usd": 0.0037240000000000003,
+      "seconds": 4.081624400103465,
+      "model": "claude-haiku-4-5-20251001",
+      "error": null,
+      "scores": {
+        "vendor_name": 1.0,
+        "invoice_number": 1.0,
+        "invoice_date": 1.0,
+        "due_date": 1.0,
+        "bill_to": 1.0,
+        "currency": 1.0,
+        "subtotal": 1.0,
+        "tax": 1.0,
+        "total": 1.0,
+        "line_items": 1.0,
+        "overall": 1.0
+      }
+    }
+  ]
+}
