@@ -4,7 +4,7 @@ Turns messy invoices (any layout, digital PDFs or scans) into clean, structured 
 result is **scored against an answer key**, **costed per invoice**, and compared with a traditional
 rule-based approach. Uncertain invoices go to a **human review queue**.
 
-**Live demo:** _add your Streamlit link here_
+**Live demo:** https://invoice-extractor-bvd2cdqre4pbrydbdrwmeq.streamlit.app/
 
 ---
 

@@ -22,6 +22,9 @@ from src.schema import HEADER_FIELDS, SCORED_FIELDS
 
 st.set_page_config(page_title="Invoice Extractor", page_icon="🧾", layout="wide")
 
+# Link to the project's public GitHub repository, shown under the title. Leave empty to hide it.
+REPO_URL = "https://github.com/stevenmunson/Invoice-Extractor"
+
 # Rule-based is always gray; AI runs take categorical colors in a fixed order.
 BASELINE_COLOR = "#8a8a85"
 SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
@@ -113,11 +116,15 @@ def fmt_value(field, v):
     return str(v)
 
 
+MODEL_SHORT = {"claude-sonnet-5-5": "Sonnet 5.5", "claude-haiku-4-5-20251001": "Haiku 4.5",
+               "claude-opus-5-5": "Opus 5.5"}
+
+
 def run_name(run):
     """Short name for a run: the model, plus which version of the instructions it used."""
     if run["method"] == "baseline":
-        return "rule-based"
-    return f"{run['model']} · instructions {run.get('prompt_version', 'original')}"
+        return "Rule-based"
+    return f"{MODEL_SHORT.get(run['model'], run['model'])} · {run.get('prompt_version', 'original')}"
 
 
 def run_label(run):
@@ -154,7 +161,8 @@ needs_key = method_key == "claude" and not api_key
 
 st.title("🧾 Invoice Extractor")
 st.caption("Turn messy invoices — any layout, PDF or scan — into clean, structured data. "
-           "Every result is scored against an answer key, and every call is costed.")
+           "Every result is scored against an answer key, and every call is costed."
+           + (f" [Source code and write-up on GitHub]({REPO_URL})" if REPO_URL else ""))
 
 tab_one, tab_batch, tab_review, tab_tune, tab_about = st.tabs(
     ["Try an invoice", "Accuracy & cost report", "Review", "Tune", "How it works"])
@@ -281,18 +289,23 @@ with tab_batch:
         for r in runs:
             latest[run_name(r)] = r
         names = list(latest)
-        chosen = st.multiselect("Runs to compare", names, default=names[-4:])
+        # Default view: the rule-based baseline (the "before AI" reference) plus the latest AI runs.
+        ai_names = [n for n in names if n != "Rule-based"]
+        default = (["Rule-based"] if "Rule-based" in names else []) + ai_names[-3:]
+        chosen = st.multiselect("Runs to compare", names, default=default,
+                                help="Each run is named model · instructions version.")
         long = pd.DataFrame([{"Method": n, "Field": FIELD_LABELS[f], "Accuracy": latest[n]["summary"]["per_field"][f]}
                              for n in chosen for f in SCORED_FIELDS])
         methods = chosen
         palette, colors = iter(SERIES_COLORS * 3), {}
         for n in names:  # color follows the run, not its position in the selection
-            colors[n] = BASELINE_COLOR if n == "rule-based" else next(palette)
+            colors[n] = BASELINE_COLOR if n == "Rule-based" else next(palette)
         chart = (alt.Chart(long).mark_bar(cornerRadiusEnd=4, height={"band": 0.8})
                  .encode(y=alt.Y("Field:N", sort=[FIELD_LABELS[f] for f in SCORED_FIELDS], title=None),
                          yOffset=alt.YOffset("Method:N", sort=methods),
                          x=alt.X("Accuracy:Q", axis=alt.Axis(format="%", grid=True), scale=alt.Scale(domain=[0, 1]), title=None),
-                         color=alt.Color("Method:N", sort=methods, legend=alt.Legend(orient="top", title=None),
+                         color=alt.Color("Method:N", sort=methods, legend=alt.Legend(orient="top", title=None, labelLimit=0,
+                                                                           columns=min(3, max(1, len(methods)))),
                                          scale=alt.Scale(domain=methods, range=[colors[m] for m in methods])),
                          tooltip=["Method", "Field", alt.Tooltip("Accuracy:Q", format=".0%")])
                  .properties(width="container", height=34 * len(SCORED_FIELDS) * max(1, len(methods)) ** 0.5))
