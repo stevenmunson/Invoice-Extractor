@@ -1,0 +1,120 @@
+# Evaluation gate (Stage 2 of CI).
+# Runs Claude on the practice invoices whenever a pull request changes something that affects the
+# AI's answers, compares the result with the version on main, and posts a report on the pull request.
+# Costs roughly $0.15-$0.40 per run (main's results are cached, so they're usually free).
+# Can also be started by hand from the Actions tab, e.g. to score the held-out test set at a milestone.
+name: Evaluation gate
+
+on:
+  pull_request:
+    paths:
+      - "instructions.txt"
+      - "src/schema.py"
+      - "src/extract_claude.py"
+      - "src/costs.py"
+      - "src/prompt_store.py"
+      - "src/pipeline.py"
+      - "src/evaluate.py"
+      - "requirements.txt"
+  workflow_dispatch:
+    inputs:
+      invoice_set:
+        description: "Which invoices to score"
+        type: choice
+        options: [practice, test]
+        default: practice
+      model:
+        description: "Model for this branch (default = the one set in src/costs.py)"
+        type: choice
+        options: [default, claude-sonnet-5-5, claude-haiku-4-5-20251001, claude-opus-5-5]
+        default: default
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:  # a newer push to the same pull request cancels the older, unfinished run
+  group: eval-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      INVOICE_SET: ${{ inputs.invoice_set || 'practice' }}
+      MODEL: ${{ inputs.model || 'default' }}
+    steps:
+      - name: Get this branch's files
+        uses: actions/checkout@v5
+
+      - name: Get main's files (to compare against)
+        if: env.INVOICE_SET == 'practice'
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install the packages the app needs
+        run: pip install -r requirements.txt
+
+      - name: Reuse main's results if nothing on main has changed
+        if: env.INVOICE_SET == 'practice'
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: before.json
+          key: eval-main-${{ hashFiles('main/instructions.txt', 'main/src/**', 'main/data/ground_truth.json', 'main/requirements.txt') }}
+
+      - name: Score main
+        if: env.INVOICE_SET == 'practice' && steps.cache.outputs.cache-hit != 'true'
+        run: python scripts/eval_gate.py run --project main --set practice --out before.json
+
+      - name: Save main's results for next time
+        if: env.INVOICE_SET == 'practice' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: before.json
+          key: eval-main-${{ hashFiles('main/instructions.txt', 'main/src/**', 'main/data/ground_truth.json', 'main/requirements.txt') }}
+
+      - name: Score this branch
+        run: python scripts/eval_gate.py run --project . --set "$INVOICE_SET" --model "$MODEL" --out after.json
+
+      - name: Compare with main
+        id: compare
+        run: |
+          if [ "$INVOICE_SET" = "practice" ]; then
+            CACHED=""
+            if [ "${{ steps.cache.outputs.cache-hit }}" = "true" ]; then CACHED="--before-cached"; fi
+            if python scripts/eval_gate.py compare --before before.json --after after.json --out report.md $CACHED; then
+              echo "failed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "failed=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            python scripts/eval_gate.py summary --after after.json --out report.md
+            echo "failed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Show the report on this run's page
+        if: always() && hashFiles('report.md') != ''
+        run: cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Post the report on the pull request
+        if: always() && github.event_name == 'pull_request' && hashFiles('report.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file report.md --edit-last \
+            || gh pr comment "${{ github.event.pull_request.number }}" --body-file report.md
+
+      - name: Fail if the change made results worse
+        if: steps.compare.outputs.failed == 'true'
+        run: |
+          echo "The evaluation gate found a regression. See the report above."
+          exit 1
