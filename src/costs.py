@@ -11,7 +11,7 @@ PRICES = {
     "claude-haiku-4-5-20251001": (1.00, 5.00),
     "claude-opus-5-5": (4.00, 20.00),
 }
-DEFAULT_MODEL = "claude-sonnet-5-5"
+DEFAULT_MODEL = "claude-haiku-4-5-20251001"
 
 
 def cost_usd(model: str, input_tokens: int, output_tokens: int) -> float:
