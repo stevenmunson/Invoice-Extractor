@@ -1,0 +1,32 @@
+# Automatic checks (the "CI" in CI/CD).
+# GitHub runs this every time something is pushed to main or proposed in a pull request,
+# and you can also start it by hand from the Actions tab ("Run workflow").
+# It is free and needs no API key. Results appear as a green check or red X next to each change.
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the project files
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install the packages the app needs
+        run: pip install -r requirements.txt pytest
+
+      - name: Make sure every Python file is valid
+        run: python -m compileall -q app.py src scripts tests
+
+      - name: Run the checks
+        run: python -m pytest -q tests
