@@ -84,6 +84,29 @@ def test_rule_based_reader_still_works():
     assert accuracy >= 0.40, f"rule-based accuracy fell to {accuracy:.0%} (normally 44%)"
 
 
+# --- Evaluation gate: does the pull-request report judge changes correctly? --------------------
+def _fake_run(broken=(), model="claude-sonnet-5-5"):
+    truth = load_truth("practice")
+    rows = []
+    for name, t in sorted(truth.items()):
+        fields = {k: v for k, v in t.items() if k != "_meta"}
+        if name in broken:
+            fields["total"] = 0.0
+        rows.append({"file": name, "fields": fields, "scores": score(fields, t), "cost_usd": 0.01,
+                     "seconds": 4.0, "error": None})
+    return {"model": model, "dataset": "practice", "prompt": "same", "prompt_version": "v1",
+            "schema_hash": "x", "rows": rows}
+
+
+def test_eval_gate_passes_identical_runs_and_fails_regressions():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from eval_gate import build_report
+    report, failed = build_report(_fake_run(), _fake_run(), flaky=[], before_cached=True)
+    assert not failed and "✅ **Passed" in report
+    report, failed = build_report(_fake_run(), _fake_run(broken=["invoice_01.pdf"]), flaky=[], before_cached=True)
+    assert failed and "invoice_01.pdf (Total)" in report
+
+
 if __name__ == "__main__":  # lets you run the checks without installing pytest
     tests = [(n, f) for n, f in sorted(globals().items()) if n.startswith("test_") and callable(f)]
     failed = 0
